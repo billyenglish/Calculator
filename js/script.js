@@ -9,19 +9,19 @@
 // There should be if conditions for plus/minus, decimal, and percentage
 
 const add = (num1, num2) => {
-    return num1 + num2;
+    return Number(num1) + Number(num2);
 }
 
 const subtract = (num1, num2) => {
-    return num1 - num2;
+    return Number(num1) - Number(num2);
 }
 
 const divide = (num1, num2) => {
-    return num1 / num2;
+    return Number(num1) / Number(num2);
 }
 
 const multiple = (num1, num2) => {
-    return num1 * num2;
+    return Number(num1) * Number(num2);
 }
 
 const operator = (num1, num2, operator) => {
@@ -43,13 +43,36 @@ const calButtons = document.querySelectorAll('button');
 let integer1 = '';
 let integer2 = '';
 let operatorValue = '';
+let displayValue = '';
+let finalValue = ''
 
 calButtons.forEach((buttons) => {
     buttons.addEventListener("click", (e) => {
         const button = e.target.value;
 
         if (button === button) {
-            
+
+            if (!isNaN(button) && operatorValue === '') {
+                integer1 += button;
+                mainScreen.textContent = integer1;
+                console.log(integer1);
+            } else {
+                if (!isNaN(button)) {
+                    integer2 += button;
+                    mainScreen.textContent = integer2;
+                    console.log(integer2);
+                }
+            }
+
+            if (button === "+" || button === "-" || button === "*" || button === "/") {
+                operatorValue = button;
+                console.log(button);
+            }
+
+            if (button === '=') {
+                finalValue = (operator(integer1, integer2, operatorValue));
+                mainScreen.textContent = finalValue;
+            }
         }
     });
 });
