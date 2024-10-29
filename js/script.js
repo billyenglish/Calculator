@@ -40,39 +40,81 @@ const operator = (num1, num2, operator) => {
 
 const mainScreen = document.querySelector('.screen-value');
 const calButtons = document.querySelectorAll('button');
-let integer1 = '';
-let integer2 = '';
-let operatorValue = '';
+let firstOperand = '';
+let secondOperand = '';
+let operatorOperand = '';
 let displayValue = '';
 let finalValue = ''
 
 calButtons.forEach((buttons) => {
     buttons.addEventListener("click", (e) => {
         const button = e.target.value;
-
-        if (button === button) {
-
-            if (!isNaN(button) && operatorValue === '') {
-                integer1 += button;
-                mainScreen.textContent = integer1;
-                console.log(integer1);
-            } else {
-                if (!isNaN(button)) {
-                    integer2 += button;
-                    mainScreen.textContent = integer2;
-                    console.log(integer2);
-                }
-            }
-
-            if (button === "+" || button === "-" || button === "*" || button === "/") {
-                operatorValue = button;
-                console.log(button);
-            }
-
-            if (button === '=') {
-                finalValue = (operator(integer1, integer2, operatorValue));
-                mainScreen.textContent = finalValue;
-            }
-        }
+        screenDisplay(button);
     });
 });
+
+const screenDisplay = function (buttons) {
+
+    if ((!isNaN(buttons))) {
+        displayFirstNumber(buttons);
+    }
+
+    if (buttons === "+" || buttons === "-" || buttons === "/" || buttons === "*") {
+        selectedOperator(buttons);
+    }
+
+    if ((!isNaN(buttons)) && operatorOperand !== "") {
+        displaySecondNumber(buttons);
+    }
+
+    if (buttons.includes("AC")) {
+        clearDisplay();
+    }
+}
+
+const displayFirstNumber = function (numericalButtons) {
+
+    firstOperand += numericalButtons;
+    displayValue = firstOperand;
+    mainScreen.textContent = displayValue;
+
+}
+
+const selectedOperator = function (operatorButtons) {
+
+    operatorOperand = operatorButtons;
+
+}
+
+const displaySecondNumber = function (numericalButtons) {
+
+    secondOperand += numericalButtons;
+    displayValue = secondOperand;
+    mainScreen.textContent = displayValue;
+
+}
+
+const updateDisplay = function () {
+}
+
+const clearDisplay = function () {
+
+    firstOperand = '';
+    secondOperand = '';
+    operatorOperand = '';
+    displayValue = '';
+    finalValue = '';
+    mainScreen.textContent = 0;
+
+}
+
+// Create Screen Display Function
+// Create Display First Number Function
+// Create Display Second Number Function
+// Create Display Final Number Value Function
+// Create Clear Display Function
+
+/*
+    User enter in the first Number it can be a decimal point!
+    If operator Operand
+*/
