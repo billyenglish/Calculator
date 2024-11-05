@@ -22,7 +22,7 @@ const subtract = (num1, num2) => {
 
 const divide = (num1, num2) => {
     if (num2 == 0) {
-        return "Error";
+        return "Cannot Divide By Zero";
     } else {
         return Number(num1) / Number(num2);
     }
@@ -95,17 +95,20 @@ const mainScreenDisplay = function (calculatorButtons) {
     }
 }
 
+// If the decimal button is selected it should create a leading zero ahead of the decimal. It should be limited to one decimal.
+
 const displayFirstNumber = (selectButton) => {
 
     if (selectButton === "0" && firstOperand === "") {
         return;
-    }
-
-    if (selectButton === "." && firstOperand === ".") {
+    } else if (selectButton === "." && firstOperand === "") {
+        firstOperand = "0.";
+    } else if (selectButton === "." && firstOperand.includes(".")) {
         return;
+    } else {
+        firstOperand += selectButton;
     }
 
-    firstOperand += selectButton;
     displayValue = firstOperand;
     mainScreen.textContent = displayValue;
 
@@ -113,11 +116,16 @@ const displayFirstNumber = (selectButton) => {
 
 const displaySecondNumber = (selectButton) => {
 
-    if (selectButton === "." && displayValue.includes(".")) {
+    if (selectButton === "0" && secondOperand === "") {
         return;
+    } else if (selectButton === "." && secondOperand === "") {
+        secondOperand = "0.";
+    } else if (selectButton === "." && secondOperand.includes(".")) {
+        return;
+    } else {
+        secondOperand += selectButton;
     }
 
-    secondOperand += selectButton;
     displayValue = secondOperand;
     mainScreen.textContent = displayValue;
 
@@ -134,6 +142,10 @@ const updateScreenDisplay = (firstNumber, secondNumber, operatorValue) => {
     firstOperand = finalValue;
     secondOperand = '';
     selectOperator = '';
+
+}
+
+const deleteScreenDisplay = function () {
 
 }
 
