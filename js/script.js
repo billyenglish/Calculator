@@ -131,7 +131,7 @@ const mainScreenDisplay = (buttons) => {
 
     if (buttons === "delete" && secondOperand !== "") {
         secondOperand = secondOperand.slice(0, -1);
-        if (firstOperand === "") {
+        if (secondOperand === "") {
             displayValue = "0";
         } else {
             displayValue = secondOperand;
