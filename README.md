@@ -2,7 +2,11 @@
 
 ## I built a simple calculator that had these type of features.
 
-* Sum Operands
-* Subtraction Operands
-* Product Operands
-* Division Operands
+* Numberical Values: 0-9
+* Sum Operand
+* Subtraction Operand
+* Product Operand
+* Division Operand
+* Percentage Operand
+* Plus/Minus Operand
+* Decimal Operand
