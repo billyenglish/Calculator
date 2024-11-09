@@ -87,6 +87,10 @@ button {
     width: 3.5rem;
 }
 
+.operators {
+    color: #FF7F50;
+}
+
 button:hover {
     cursor: pointer;
     transform: scale(1.1);
