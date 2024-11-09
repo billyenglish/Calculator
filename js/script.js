@@ -76,7 +76,7 @@ const topScreenDisplay = (buttons) => {
     if (buttons === "=" && finalValue) {
         topScreen.textContent = `${firstOperand} ${operatorValue} ${secondOperand} =`;
     } else if (["+", "-", "/", "*"].includes(buttons)) {
-        topScreen.textContent = `${firstOperand} ${buttons}`;
+        topScreen.textContent = `${firstOperand} ${buttons} ${secondOperand}`;
     }
 
 }
@@ -93,7 +93,7 @@ const mainScreenDisplay = (buttons) => {
         bottomScreen.textContent = displayValue;
     }
 
-    if (buttons === "plus-minus" && firstOperand) {
+    if (buttons === "plus-minus" && firstOperand && firstOperand !== undefined) {
         firstOperand = (parseFloat(-firstOperand)).toString();
         displayValue = firstOperand;
         bottomScreen.textContent = displayValue;
@@ -118,13 +118,13 @@ const mainScreenDisplay = (buttons) => {
     }
 
     if (buttons === "percent" && secondOperand) {
-        secondOperand *= .01;
+        secondOperand *= (parseFloat(secondOperand * 0.01).toString());
         displayValue = secondOperand;
         bottomScreen.textContent = displayValue;
     }
 
     if (buttons === "plus-minus" && secondOperand && firstOperand !== undefined) {
-        secondOperand = -secondOperand;
+        secondOperand = (parseFloat(-secondOperand)).toString();
         displayValue = secondOperand;
         bottomScreen.textContent = displayValue;
     }
