@@ -21,18 +21,18 @@ const subtract = (num1, num2) => {
 }
 
 const divide = (num1, num2) => {
-    if (num2 == 0) {
-        return "Cannot Divide By Zero";
+    if (num2 === 0) {
+        return "Cannot divide by Zero";
     } else {
         return Number(num1) / Number(num2);
     }
 }
 
-const multiply = (num1, num2) => {
+const product = (num1, num2) => {
     return Number(num1) * Number(num2);
 }
 
-const operator = (num1, num2, operator) => {
+const operators = (num1, num2, operator) => {
 
     switch (operator) {
         case '+':
@@ -42,121 +42,164 @@ const operator = (num1, num2, operator) => {
         case '/':
             return divide(num1, num2);
         case '*':
-            return multiply(num1, num2);
+            return product(num1, num2);
     }
+
 }
 
-const mainScreen = document.querySelector('.screen-value');
-const calButtons = document.querySelectorAll('button');
+const topScreen = document.querySelector('.upper-screen');
+const bottomScreen = document.querySelector('.main-screen');
+const calculatorButton = document.querySelectorAll("button");
 let firstOperand = '';
 let secondOperand = '';
-let selectOperator = '';
+let operatorValue = '';
 let displayValue = '';
 let finalValue = '';
+let plusMinusValue = '';
 
-calButtons.forEach((buttons) => {
+
+calculatorButton.forEach((buttons) => {
     buttons.addEventListener("click", (e) => {
-        const buttons = e.target.value;
+        const calculationButtons = e.target.value;
 
-        mainScreenDisplay(buttons)
+        topScreenDisplay(calculationButtons);
+        mainScreenDisplay(calculationButtons);
     });
 });
 
-const mainScreenDisplay = function (calculatorButtons) {
+const topScreenDisplay = (buttons) => {
 
-    /* Variable for all the buttons on the container */
-
-    const selectButton = calculatorButtons;
-
-    if (((!isNaN(selectButton)) || selectButton === ".") && selectOperator === "") {
-        displayFirstNumber(selectButton);
+    if (buttons === "clear") {
+        topScreen.textContent = "";
     }
 
-    if (selectButton === "%" && firstOperand) {
-        firstOperand *= .01;
-        mainScreen.textContent = firstOperand;
+    if (buttons === "=" && finalValue) {
+        topScreen.textContent = `${firstOperand} ${operatorValue} ${secondOperand} =`;
+    } else if (["+", "-", "/", "*"].includes(buttons)) {
+        topScreen.textContent = `${firstOperand} ${buttons}`;
     }
 
-    if ((selectButton === "+") || (selectButton === "-") || (selectButton === "*") || (selectButton === "/")) {
-        selectOperator = selectButton;
-    }
-
-    if (((!isNaN(selectButton)) || selectButton === ".") && selectOperator !== "") {
-        displaySecondNumber(selectButton);
-        return;
-    }
-
-    if (selectButton === "=" && firstOperand !== "" && secondOperand !== "") {
-        updateScreenDisplay(firstOperand, secondOperand, selectOperator);
-    }
-
-    if (selectButton === "AC") {
-        clearScreenDisplay();
-    }
 }
 
-// If the decimal button is selected it should create a leading zero ahead of the decimal. It should be limited to one decimal.
+const mainScreenDisplay = (buttons) => {
 
-const displayFirstNumber = (selectButton) => {
+    if ((!isNaN(buttons) || buttons === ".") && operatorValue === "") {
+        displayFirstOperand(buttons);
+    }
 
-    if (selectButton === "0" && firstOperand === "") {
+    if (buttons === "percent" && firstOperand) {
+        firstOperand = (parseFloat(firstOperand) * 0.01).toString();
+        displayValue = firstOperand;
+        bottomScreen.textContent = displayValue;
+    }
+
+    if (buttons === "plus-minus" && firstOperand) {
+        firstOperand = (parseFloat(-firstOperand)).toString();
+        displayValue = firstOperand;
+        bottomScreen.textContent = displayValue;
+    }
+
+    if (buttons === "delete" && firstOperand) {
+        firstOperand = firstOperand.slice(0, -1);
+        if (firstOperand === "") {
+            displayValue = "0";
+        } else {
+            displayValue = firstOperand;
+        }
+        bottomScreen.textContent = displayValue;
+    }
+
+    if (["+", "-", "/", "*"].includes(buttons)) {
+        operatorValue = buttons;
+    }
+
+    if ((!isNaN(buttons) || buttons === ".") && operatorValue !== "") {
+        displaySecondOperand(buttons);
+    }
+
+    if (buttons === "percent" && secondOperand) {
+        secondOperand *= .01;
+        displayValue = secondOperand;
+        bottomScreen.textContent = displayValue;
+    }
+
+    if (buttons === "plus-minus" && secondOperand && firstOperand !== undefined) {
+        secondOperand = -secondOperand;
+        displayValue = secondOperand;
+        bottomScreen.textContent = displayValue;
+    }
+
+    if (buttons === "delete" && secondOperand !== "") {
+        secondOperand = secondOperand.slice(0, -1);
+        if (firstOperand === "") {
+            displayValue = "0";
+        } else {
+            displayValue = secondOperand;
+        }
+        bottomScreen.textContent = displayValue;
+    }
+
+    if (buttons === "=" && firstOperand && secondOperand) {
+        displayFinalValue(buttons);
+    }
+
+    if (buttons === "clear") {
+        clearScreen();
+    }
+
+}
+
+const displayFirstOperand = function (buttons) {
+
+    if (buttons === "0" && firstOperand === "") {
         return;
-    } else if (selectButton === "." && firstOperand === "") {
+    } else if (buttons === "." && firstOperand === "") {
         firstOperand = "0.";
-    } else if (selectButton === "." && firstOperand.includes(".")) {
+    } else if (buttons === "." && firstOperand.includes(".")) {
         return;
     } else {
-        firstOperand += selectButton;
+        firstOperand += buttons;
     }
 
     displayValue = firstOperand;
-    mainScreen.textContent = displayValue;
+    bottomScreen.textContent = displayValue;
 
 }
 
-const displaySecondNumber = (selectButton) => {
+const displaySecondOperand = function (buttons) {
 
-    if (selectButton === "0" && secondOperand === "") {
+    if (buttons === "0" && secondOperand === "") {
         return;
-    } else if (selectButton === "." && secondOperand === "") {
+    } else if (buttons === "." && secondOperand === "") {
         secondOperand = "0.";
-    } else if (selectButton === "." && secondOperand.includes(".")) {
+    } else if (buttons === "." && secondOperand.includes(".")) {
         return;
     } else {
-        secondOperand += selectButton;
+        secondOperand += buttons;
     }
 
     displayValue = secondOperand;
-    mainScreen.textContent = displayValue;
+    bottomScreen.textContent = displayValue;
 
 }
 
-const displayPercentValue = (firstOperand) => {
-    console.log(firstOperand);
-}
-
-const updateScreenDisplay = (firstNumber, secondNumber, operatorValue) => {
-
-    finalValue = operator(firstNumber, secondNumber, operatorValue);
-    mainScreen.textContent = finalValue;
-    firstOperand = finalValue;
+const displayFinalValue = function () {
+    finalValue = operators(firstOperand, secondOperand, operatorValue);
+    displayValue = finalValue;
+    bottomScreen.textContent = displayValue
+    firstOperand = finalValue ;
     secondOperand = '';
-    selectOperator = '';
-
+    operatorValue = '';
 }
 
-const deleteScreenDisplay = function () {
-
-}
-
-const clearScreenDisplay = function () {
+const clearScreen = () => {
 
     firstOperand = '';
     secondOperand = '';
-    selectOperator = '';
-    displayValue = '';
+    operatorValue = '';
+    displayValue = ''; 
     finalValue = '';
-    mainScreen.textContent = 0;
+    bottomScreen.textContent = "0";
 
 }
 
