@@ -2,6 +2,8 @@
 
 ## I built a simple calculator that had these type of features.
 
+<img src="./images/Calculator_Image.png" alt="Calculator Image">
+
 * Numberical Values: 0-9
 * Sum Operand
 * Subtraction Operand
