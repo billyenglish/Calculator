@@ -2,7 +2,7 @@
 
 ## I built a simple calculator that had these type of features.
 
-<img src="./images/Calculator_Image.png" alt="Calculator Image" width="200">
+<img src="./images/Calculator_Image.png" alt="Calculator Image" width="500">
 
 * Numberical Values: 0-9
 * Sum Operand
