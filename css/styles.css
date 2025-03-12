@@ -18,7 +18,6 @@ body {
 header {
     display: flex;
     justify-content: center;
-    border: 1px solid #FFF;
     align-items: center;
     height: 8rem;
 }
@@ -112,7 +111,6 @@ footer {
     justify-content: center;
     padding: 1.25rem 0;
     font-size: 1.25rem;
-    border: 1px solid #FFF;
     height: 4rem;
     letter-spacing: .1rem;
 }
