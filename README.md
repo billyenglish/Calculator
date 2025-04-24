@@ -15,7 +15,7 @@
     <li>Built with clean, modular code</li>
 </ul>
 
-
+<h2>🛠️ Technologies Used</h2>
 
 
 
