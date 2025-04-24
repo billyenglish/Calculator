@@ -17,6 +17,12 @@
 
 <h2>🛠️ Technologies Used</h2>
 
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+
 
 
 
