@@ -18,11 +18,8 @@
 <h2>🛠️ Technologies Used</h2>
 
 <ul>
-    <li></li>
-    <li></li>
-    <li></li>
+    <li>HTML5</li>
+    <li>CSS3</li>
+    <li>JavaScript</li>
+    <li>Vanilla JS</li>
 </ul>
-
-
-
-
