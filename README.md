@@ -2,11 +2,6 @@
 
 <img src="./images/Calculator_Image.png" alt="Calculator Image" width="450">
 
-* Numberical Values: 0-9
-* Sum Operand
-* Subtraction Operand
-* Product Operand
-* Division Operand
-* Percentage Operand
-* Plus/Minus Operand
-* Decimal Operand
+<p>A simple, responsive calculator built with modern web technologies. It performs basic arithmetic operations and offers a clean, intuitive UI.</p>
+
+<h2>🚀 Features</h2>
