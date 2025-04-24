@@ -2,7 +2,7 @@
 
 <img src="./images/Calculator_Image.png" alt="Calculator Image" width="450">
 
-<a href="billyenglish.github.io/Calculator/">Live Demo</a>
+<a href="billyenglish.github.io/Calculator/">Calculator App: Live Demo</a>
 
 <p>A simple, responsive calculator built with modern web technologies. It performs basic arithmetic operations and offers a clean, intuitive UI.</p>
 
