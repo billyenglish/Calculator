@@ -27,3 +27,5 @@
 <h2>📋 Usage</h2>
 
 <p>Click the buttons or use your keyboard to perform calculations. The C button clears the input, and the = button evaluates the expression.</p>
+
+<h2>📄 License</h2>
