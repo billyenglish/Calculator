@@ -5,3 +5,18 @@
 <p>A simple, responsive calculator built with modern web technologies. It performs basic arithmetic operations and offers a clean, intuitive UI.</p>
 
 <h2>🚀 Features</h2>
+
+<ul>
+    <li>Perform basic arithmetic: Addition, Subtraction, Multiplication, Division</li>
+    <li>Clear/reset functionality</li>
+    <li>Decimal support</li>
+    <li>Keyboard input support</li>
+    <li>Responsive design for desktop and mobile</li>
+    <li>Built with clean, modular code</li>
+</ul>
+
+
+
+
+
+
