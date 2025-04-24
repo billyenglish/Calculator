@@ -29,3 +29,5 @@
 <p>Click the buttons or use your keyboard to perform calculations. The C button clears the input, and the = button evaluates the expression.</p>
 
 <h2>📄 License</h2>
+
+<p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
