@@ -36,7 +36,7 @@ main {
     flex: 0 1 1;
     align-items: center;
     height: 100%;
-    margin: 7rem 0 0 0;
+    margin: 8rem 0 0 0;
 }
 
 .calculator-container {
@@ -144,6 +144,14 @@ footer i {
 @media screen and(min-width: 426px) and (max-width: 768px) {
 
     .calculator-container {
-        margin: -3rem 0 0 0;
+        margin: 0 0 0 -4rem;
     }
+}
+
+@media screen and(min-width: 769px) and (max-width: 1024px) {
+
+    .calculator-container {
+        margin: 0 0 0 -5rem;
+    }
+
 }
